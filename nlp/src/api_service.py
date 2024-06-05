@@ -10,7 +10,7 @@ nlp_manager = NLPManager()
 
 @app.get("/health")
 def health():
-    return {"message": "health ok"}
+    return {"message": "NLP API Service health ok"}
 
 
 @app.post("/extract")

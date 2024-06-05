@@ -14,14 +14,17 @@ ENV PYTHONUNBUFFERED 1
 ENV PIP_ROOT_USER_ACTION=ignore
 
 RUN pip install -U pip
-WORKDIR /workspace
+WORKDIR /usr/src
+ENV MODEL_PATH=/usr/src/models
 
 # install other requirements
 COPY requirements.txt .
 RUN pip install -r requirements.txt
+RUN apt-get install -y libgl1-mesa-dev
+RUN apt-get install -y libglib2.0-0
 
 # copy the rest of the files into the container
-COPY src .
+COPY src /usr/src
 
 # start model service
 CMD uvicorn api_service:app --port 5004 --host 0.0.0.0

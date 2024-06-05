@@ -130,7 +130,7 @@ services:
       start_period: 3s
   til-vlm:
     build: vlm/
-    image: til_vl:v0.0.1
+    image: til_vlm:v0.0.1
     container_name: til-vlm
     environment:
       NVIDIA_VISIBLE_DEVICES: 0

@@ -15,13 +15,20 @@ ENV PIP_ROOT_USER_ACTION=ignore
 
 RUN pip install -U pip
 WORKDIR /workspace
+ENV MODEL_PATH=/workspace/model_export2
 
 # install other requirements
 COPY requirements.txt .
 RUN pip install -r requirements.txt
+RUN pip uninstall torch_xla -y
 
 # copy the rest of the files into the container
+#COPY . /workspace
+#ADD . /workspace
 COPY src .
+COPY model_export2 ./model_export2
+
+EXPOSE 5002 
 
 # start model service
 CMD uvicorn api_service:app --port 5002 --host 0.0.0.0

@@ -1,6 +1,10 @@
 from fastapi import FastAPI, Request
 import base64
 from ASRManager import ASRManager
+import logging  # Import logging module
+
+# Configure basic logging to print DEBUG level messages to the console
+logging.basicConfig(level=logging.DEBUG)
 
 app = FastAPI()
 
@@ -26,7 +30,7 @@ async def stt(request: Request):
     for instance in input_json["instances"]:
         # each is a dict with one key "b64" and the value as a b64 encoded string
         audio_bytes = base64.b64decode(instance["b64"])
-
+        
         transcription = asr_manager.transcribe(audio_bytes)
         predictions.append(transcription)
 

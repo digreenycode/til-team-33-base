@@ -1,6 +1,11 @@
-transformers==4.31.0
-librosa==0.10.1
+transformers==4.41.0
+librosa
 fastapi
 accelerate
 uvicorn[standard]
-pandas==2.0.3
+pandas
+torch==2.3.0
+torchvision==0.18.0
+torchaudio==2.3.0
+tqdm
+jiwer
