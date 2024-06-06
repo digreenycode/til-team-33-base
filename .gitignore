@@ -169,6 +169,7 @@ src/gcloud/*.json
 
 # ignore model weights, curriculum
 asr/wsp-trained
-nlp/model_export2
-vlm/src/models/DFN5B-CLIP-ViT-H-14-378
+#nlp/model_export2
+#vlm/src/models/DFN5B-CLIP-ViT-H-14-378
 til-24-curriculum
+

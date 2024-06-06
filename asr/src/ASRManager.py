@@ -13,13 +13,13 @@ class ASRManager:
         # pass
         self.device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
-        self.processor = WhisperProcessor.from_pretrained("openai/whisper-small")
-        model_path = "src/wsp-trained"
+        self.processor = WhisperProcessor.from_pretrained("processor")
+        model_path = "wsp-trained"
         self.model = WhisperForConditionalGeneration.from_pretrained(model_path)
         self.model.config.forced_decoder_ids = self.processor.get_decoder_prompt_ids(language="en", task="transcribe")
         
-        self.tokenizer = WhisperTokenizer.from_pretrained("openai/whisper-small")
-        self.feature_extractor = WhisperFeatureExtractor.from_pretrained("openai/whisper-small")
+        self.tokenizer = WhisperTokenizer.from_pretrained("tokenizer")
+        self.feature_extractor = WhisperFeatureExtractor.from_pretrained("features")
         
         self.pipe = pipeline(
             "automatic-speech-recognition",
